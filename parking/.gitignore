@@ -1,0 +1,68 @@
+# 1. VARIABLES DE ENTORNO Y CREDENCIALES
+
+**/.env
+**/.env.*
+!**/.env.example
+
+**/application-local.properties
+
+# 2. JAVA / SPRING BOOT / MAVEN
+
+
+**/target/
+**/build/
+
+*.class
+*.log
+
+# Se mantienen:
+# pom.xml
+# mvnw
+# mvnw.cmd
+# .mvn/
+
+
+# 3. VISUAL STUDIO CODE / INTELLIJ
+
+**/.vscode/
+**/.idea/
+
+*.iml
+
+
+# 4. PLATFORMIO / ESP32
+
+**/.pio/
+**/.pioenvs/
+**/.piolibdeps/
+
+
+# 5. PYTHON
+
+**/__pycache__/
+**/.venv/
+
+*.pyc
+
+
+# 6. IMAGENES Y RESULTADOS DE OPENCV
+
+# No subir las imagenes intermedias
+**/imagenes_paso_a_paso/
+
+# No subir los resultados generados
+**/resultados_prueba_*/
+
+# IMPORTANTE:
+# imagenes_matriculas/ NO se ignora.
+# Se subiran las imagenes originales de prueba.
+
+
+# 7. ARCHIVOS TEMPORALES DEL SISTEMA
+
+.DS_Store
+Thumbs.db
+
+*~
+*.swp
+*.swo

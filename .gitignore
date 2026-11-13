@@ -50,9 +50,6 @@
 # No subir las imagenes intermedias
 **/imagenes_paso_a_paso/
 
-# No subir los resultados generados
-**/resultados_prueba_*/
-
 # IMPORTANTE:
 # imagenes_matriculas/ NO se ignora.
 # Se subiran las imagenes originales de prueba.

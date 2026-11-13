@@ -1,0 +1,34 @@
+//Ejecutar server
+
+cd ~/Escritorio/TFG_Parking/parking
+./mvnw spring-boot:run
+
+
+//Coche 1
+
+curl -X POST http://localhost:8080/api/reconocimiento \
+  -F "imagen=@imagenes_matriculas/coches/coche1.jpeg"
+
+
+//Coche 2
+
+curl -X POST http://localhost:8080/api/reconocimiento \
+  -F "imagen=@imagenes_matriculas/coches/coche2.jpg"
+
+//Coche 3
+
+curl -X POST http://localhost:8080/api/reconocimiento \
+  -F "imagen=@imagenes_matriculas/coches/coche3.jpg"
+
+//Coche 4
+curl -X POST http://localhost:8080/api/reconocimiento \
+  -F "imagen=@imagenes_matriculas/coches/coche4.jpg"
+
+
+//Coche 5
+
+curl -X POST http://localhost:8080/api/reconocimiento \
+  -F "imagen=@imagenes_matriculas/coches/coche5.webp"
+
+
+

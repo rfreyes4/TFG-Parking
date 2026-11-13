@@ -1,6 +1,5 @@
 package com.tfg.parking.service;
 
-import com.tfg.parking.controller.AccesoController;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,16 +22,18 @@ import static org.bytedeco.opencv.global.opencv_imgproc.*;
 import org.bytedeco.opencv.opencv_core.Scalar;
 import static org.bytedeco.opencv.global.opencv_core.countNonZero;
 
+import net.sourceforge.tess4j.TesseractException;
+
 
 @Service 
 public class ReconocimientoService {
 
-    private final AccesoController accesoController;
+    private final OcrService ocrService;
     private static final Path CARPETA_IMAGENES = Paths.get("imagenes_paso_a_paso");
 
 
-    ReconocimientoService(AccesoController accesoController) {
-        this.accesoController = accesoController;
+     public ReconocimientoService(OcrService ocrService) {
+        this.ocrService = ocrService;
     }
 
 
@@ -92,9 +93,16 @@ public class ReconocimientoService {
             Mat matriculaRecortada = recortarMatricula(imagenMatriculaRedimensionada, matricula);
             guardarPaso(carpetaProceso,"08_matricula_recortada.jpg",matriculaRecortada);
 
-            return "Procesamiento completado: " + carpetaProceso.toAbsolutePath();
+            //Paso 9: Probando el reconocimiento de caracteres con OCR
+            String textoMatricula = ocrService.leerMatricula(matriculaRecortada);
 
-        }catch (IOException e){
+            if(textoMatricula.isEmpty()){
+                return "No se han podido reconocer los caracteres de la matrícula";
+            }
+
+            return "Matrícula reconocida: " + textoMatricula;
+
+        }catch (IOException | TesseractException e){
             return "Error durante el proceso de reconocimiento: " + e.getMessage(); 
         }
 
